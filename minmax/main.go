@@ -10,14 +10,25 @@ import (
 
 func main()  {
 	
+	
+
+    min, max, values := getInput()
+
+	resultado := minMax(min, max, values)
+	
+	//salida de datos 
+
+	fmt.Println("valor minimo", min, "valor maximo", max, "valores", values)
+	fmt.Println("EL rango es", resultado)
+}
+
+func getInput()(float64, float64, []float64){
 	//declaracion de variables
 	var min, max float64
 	var values [] float64
-	var slide [] float64
 
 	//entrada de min & max
-	fmt.Println("Escribir un valores en una sola linea separada por espacios")
-
+	fmt.Println("Escribir los valores (minimo, maximo, lista de valores), separado por espacios")
 	fmt.Scan(&min)
 	fmt.Scan(&max)
 
@@ -34,18 +45,17 @@ func main()  {
 			values = append(values, num)	
 		}
 	}
+    
+	return min, max, values
+}
 
+func minMax (min float64, max float64, values[] float64) [] float64{
+	var slide[] float64
 	for _, s := range values{
 
 		if s >= min && s < max{
 			slide = append(slide, s)
 		}
 	}
-	
-	//salida de datos 
-
-	fmt.Println("valor minimo", min, "valor maximo", max, "valores", values)
-	fmt.Println("EL rango es", slide)
-
-	
+	return slide
 }
